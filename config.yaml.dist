@@ -82,6 +82,15 @@ general:
   # Do you want to use colors in your listing?
   enableRepositoryColors: true
 
+  # Set this to use the output of the given command to resolve passwords.
+  # Values set in config files will take precedence over this. The command
+  # given here will serve as a fallback.
+  # passCommand: 'pass' # or for example, 'bw get password'
+
+  # This describes the namespace under which to search for sw-cli-tools-related
+  # config values.
+  passCommandNamespace: 'sw-cli-tools'
+
 update:
   pharUrl: https://shopwarelabs.github.io/sw-cli-tools/sw.phar
   vesionUrl: https://shopwarelabs.github.io/sw-cli-tools/sw.phar.version

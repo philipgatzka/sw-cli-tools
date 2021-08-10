@@ -13,6 +13,7 @@ use Shopware\PluginInfo\PluginInfo;
 use ShopwareCli\Cache\File;
 use ShopwareCli\Config;
 use ShopwareCli\ConfigFileCollector;
+use ShopwareCli\PassCommandConfig;
 use ShopwareCli\Services\GitIdentityEnvironment;
 use ShopwareCli\Services\GitUtil;
 use ShopwareCli\Services\IoService;
@@ -108,6 +109,11 @@ class DependencyInjection
         $container->register('config', Config::class)
             ->addArgument(new Reference('config_file_collector'))
             ->setPublic(true);
+
+        $container->register('pass_command_config', PassCommandConfig::class)
+            ->setDecoratedService('config', 'pass_command_config')
+            ->addArgument(new Reference('pass_command_config.inner'))
+            ->setPublic(false);
 
         $container->register('extension_manager', ExtensionManager::class)
             ->setPublic(true);
